@@ -24,3 +24,14 @@ const calculateRevenue = (data: any[]): number => {
 // Access the 'data' array from the parsed JSON
 const revenue = calculateRevenue(data.data); // 'data' contains the array of records
 console.log(`Revenue: ${formatCurrency(revenue)}`);
+
+// EXPENSES CALCULATION
+const calculateExpenses = (data: any[]): number => {
+  return data
+    .filter((item) => item.account_category === "expense") // Filter only expense entries
+    .reduce((sum, item) => sum + item.total_value, 0); // Sum up the total_value
+};
+
+// Calculate expenses
+const expenses = calculateExpenses(data.data);
+console.log(`Expenses: ${formatCurrency(expenses)}`);
