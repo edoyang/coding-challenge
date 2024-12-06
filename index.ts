@@ -10,6 +10,11 @@ const readData = (): any => {
 const data = readData();
 // console.log("Parsed Data:", data);  // Uncomment to see the parsed data
 
+const formatCurrency = (value: number): string => {
+  return `$${Math.round(value).toLocaleString("en-US")}`;
+};
+
+// REVENUE CALCULATION
 const calculateRevenue = (data: any[]): number => {
   return data
     .filter((item) => item.account_category === "revenue") // Filter only revenue entries
@@ -18,4 +23,4 @@ const calculateRevenue = (data: any[]): number => {
 
 // Access the 'data' array from the parsed JSON
 const revenue = calculateRevenue(data.data); // 'data' contains the array of records
-console.log(`Revenue: $${revenue.toLocaleString("en-US")}`);
+console.log(`Revenue: ${formatCurrency(revenue)}`);
