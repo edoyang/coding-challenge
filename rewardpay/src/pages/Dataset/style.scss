@@ -17,6 +17,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    padding: 0 2rem;
 
     .user-data {
       border-radius: 8px;
@@ -31,10 +32,34 @@
       white-space: nowrap;
       max-height: 2.5em;
       cursor: pointer;
+      width: 400px;
+
+      > * {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      @media screen and (max-width: 950px) {
+        width: 300px;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 200px;
+      }
+
+      @media screen and (max-width: 500px) {
+        width: 100%;
+        max-width: 80vw;
+      }
     }
 
     .user-data.open {
       max-height: 500px;
+
+      > * {
+        white-space: normal;
+      }
     }
   }
 }
