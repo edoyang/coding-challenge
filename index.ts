@@ -64,3 +64,57 @@ const calculateNetProfitMargin = (
 // Calculate Net Profit Margin
 const netProfitMargin = calculateNetProfitMargin(revenue, expenses);
 console.log(`Net Profit Margin: ${netProfitMargin}%`);
+
+// CALCULATE WORKING CAPITAL
+const calculateWorkingCapitalRatio = (data: any[]): number => {
+  // Calculate assets
+  const totalAssets =
+    data
+      .filter(
+        (item) =>
+          item.account_category === "assets" &&
+          item.value_type === "debit" &&
+          ["current", "bank", "current_accounts_receivable"].includes(
+            item.account_type
+          )
+      )
+      .reduce((sum, item) => sum + item.total_value, 0) -
+    data
+      .filter(
+        (item) =>
+          item.account_category === "assets" &&
+          item.value_type === "credit" &&
+          ["current", "bank", "current_accounts_receivable"].includes(
+            item.account_type
+          )
+      )
+      .reduce((sum, item) => sum + item.total_value, 0);
+
+  // Calculate liabilities
+  const totalLiabilities =
+    data
+      .filter(
+        (item) =>
+          item.account_category === "liability" &&
+          item.value_type === "credit" &&
+          ["current", "current_accounts_payable"].includes(item.account_type)
+      )
+      .reduce((sum, item) => sum + item.total_value, 0) -
+    data
+      .filter(
+        (item) =>
+          item.account_category === "liability" &&
+          item.value_type === "debit" &&
+          ["current", "current_accounts_payable"].includes(item.account_type)
+      )
+      .reduce((sum, item) => sum + item.total_value, 0);
+
+  // Calculate working capital ratio
+  return totalLiabilities
+    ? Math.round((totalAssets / totalLiabilities) * 100)
+    : 0; // Avoid division by zero
+};
+
+// Calculate Working Capital Ratio
+const workingCapitalRatio = calculateWorkingCapitalRatio(data.data);
+console.log(`Working Capital Ratio: ${workingCapitalRatio}%`);
