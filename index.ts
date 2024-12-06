@@ -35,3 +35,19 @@ const calculateExpenses = (data: any[]): number => {
 // Calculate expenses
 const expenses = calculateExpenses(data.data);
 console.log(`Expenses: ${formatCurrency(expenses)}`);
+
+// CALCULATE GROSS PROFIT
+const calculateGrossProfitMargin = (data: any[], revenue: number): number => {
+  const totalSales = data
+    // Filter only sales entries with debit value type
+    .filter(
+      (item) => item.account_type === "sales" && item.value_type == "debit"
+    )
+    .reduce((sum, item) => sum + item.total_value, 0);
+
+  return revenue ? Math.round((totalSales / revenue) * 100) : 0; // Avoid division by zero
+};
+
+// Calculate Gross Profit Margin
+const grossProfitMargin = calculateGrossProfitMargin(data.data, revenue);
+console.log(`Gross Profit Margin: ${grossProfitMargin}%`);
