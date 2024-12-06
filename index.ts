@@ -51,3 +51,16 @@ const calculateGrossProfitMargin = (data: any[], revenue: number): number => {
 // Calculate Gross Profit Margin
 const grossProfitMargin = calculateGrossProfitMargin(data.data, revenue);
 console.log(`Gross Profit Margin: ${grossProfitMargin}%`);
+
+// CALCULATE NET PROFIT
+const calculateNetProfitMargin = (
+  revenue: number,
+  expenses: number
+): number => {
+  const netProfit = expenses - revenue; // Calculate net profit
+  return revenue ? Math.round((netProfit / revenue) * 100) : 0; // Avoid division by zero
+};
+
+// Calculate Net Profit Margin
+const netProfitMargin = calculateNetProfitMargin(revenue, expenses);
+console.log(`Net Profit Margin: ${netProfitMargin}%`);
