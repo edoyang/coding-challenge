@@ -1,7 +1,8 @@
 {
   "scripts": {
     "myChallenge": "ts-node index.ts",
-    "start": "cd rewardpay && npm install && npm run dev -- --open"
+    "start": "cd rewardpay && npm install && npm run dev -- --open",
+    "setup": "npm install && cd rewardpay && npm install"
   },
   "bin": {
     "myChallenge": "./index.ts"
