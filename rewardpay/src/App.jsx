@@ -6,6 +6,7 @@ import Expenses from "./pages/Expenses";
 import GPM from "./pages/GPM";
 import NPM from "./pages/NPM";
 import WCR from "./pages/WCR";
+import Dataset from "./pages/Dataset";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/gpm" Component={GPM} />
         <Route path="/npm" Component={NPM} />
         <Route path="/wcr" Component={WCR} />
+        <Route path="/dataset" Component={Dataset} />
       </Routes>
       <Footer />
     </>
