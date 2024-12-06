@@ -1,4 +1,11 @@
 {
+  "scripts": {
+    "myChallenge": "ts-node index.ts",
+    "start": "cd rewardpay && npm install && npm run dev -- --open"
+  },
+  "bin": {
+    "myChallenge": "./index.ts"
+  },
   "devDependencies": {
     "@types/node": "^22.10.1",
     "ts-node": "^10.9.2",
