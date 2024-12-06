@@ -7,6 +7,7 @@ import GPM from "./pages/GPM";
 import NPM from "./pages/NPM";
 import WCR from "./pages/WCR";
 import Dataset from "./pages/Dataset";
+import "./App.css";
 
 function App() {
   return (

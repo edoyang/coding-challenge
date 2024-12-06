@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "../../../../data.json";
+import "./style.scss";
 
 const Dataset = () => {
+  const [openIndex, setOpenIndex] = useState(null); // For toggling individual items
+  const [openAll, setOpenAll] = useState(false); // For toggling all items
+
+  const handleClick = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const handleOpenAll = () => {
+    setOpenAll(!openAll);
+    setOpenIndex(null);
+  };
+
   return (
-    <div>
+    <div className="dataset content">
       <h2>Dataset</h2>
+      <button onClick={handleOpenAll}>
+        {openAll ? "Close All Dataset" : "Open All Dataset"}
+      </button>
       <div className="list">
         {data.data.map((item, index) => (
-          <div className="user-data" key={index}>
+          <div
+            className={`user-data ${
+              openAll || openIndex === index ? "open" : ""
+            }`}
+            key={index}
+            onClick={() => !openAll && handleClick(index)}>
             <p>Account identifier: {item.account_identifier}</p>
             <p>Account category: {item.account_category}</p>
             <p>Account code: {item.account_code}</p>

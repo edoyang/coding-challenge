@@ -10,7 +10,7 @@ const Expenses = () => {
         .filter((item) => item.account_category === "expense")
         .reduce((sum, item) => sum + item.total_value, 0);
 
-      setExpenses(totalExpenses);
+      setExpenses(Math.round(totalExpenses));
     };
 
     calculateExpenses();
