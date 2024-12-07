@@ -57,7 +57,7 @@ const calculateNetProfitMargin = (
   revenue: number,
   expenses: number
 ): number => {
-  const netProfit = expenses - revenue; // Calculate net profit
+  const netProfit = revenue - expenses; // Calculate net profit
   return revenue ? Math.round((netProfit / revenue) * 100) : 0; // Avoid division by zero
 };
 
