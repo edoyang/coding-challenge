@@ -15,7 +15,7 @@ const NPM = () => {
         .reduce((sum, item) => sum + item.total_value, 0);
 
       const npm = revenue
-        ? Math.round(((expenses - revenue) / revenue) * 100)
+        ? Math.round(((revenue - expenses) / revenue) * 100)
         : 0;
       setNetProfitMargin(npm);
     };
